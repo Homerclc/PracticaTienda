@@ -4,10 +4,12 @@ session_start();
 require('Smarty.class.php');
 include 'Producto.php';
 include 'DB.php';
+include 'Cesta.php';
 $plantilla = new Smarty;
 $plantilla->template_dir = 'vistas/templates/template';
 $plantilla->compile_dir = 'vistas/templates/template_c';
 if (isset($_SESSION['nombre'])) {
+    
 //pasamos el valor del nombre de usuario conectado a la vista
     $plantilla->assign("nombre", $_SESSION['nombre']);
 //llamamos al metodo ObtieneProductos ( nos devuelve un array de Producto ) 
@@ -26,8 +28,25 @@ if (isset($_SESSION['nombre'])) {
 //pasamos los valores con formato a Profuctos.tpl con la variable $listado.
         $plantilla->assign("listado", $listado);
     }
-    $plantilla->display('producto.tpl');
+    
 } else {//si no estas logueado correctamente volvemos a la pagina de login.( para no entrar por url) 
     header('Location: http://localhost/tienda/logica/login.php');
 }
+$cesta=Cesta::obtener_cesta();
+
+
+
+if(isset($_POST['submit'])){
+    $cod=$_POST['cod'];
+    $cesta->add_producto($cod);
+    
+    
+    
+   
+}
+$cesta->guardar_cesta();
+$plantilla->assign("cesta", $cesta);
+$plantilla->display('producto.tpl');
+
+
 ?>

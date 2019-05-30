@@ -75,6 +75,26 @@ FIN;
         }
         return $productos; 
     }
+    public static function obtieneProducto($codigo) {
+
+        $valores = array('cod' => $codigo);
+        $sql = <<<FIN
+        SELECT cod, nombre_corto, nombre, PVP
+        FROM producto 
+        WHERE cod = :cod
+FIN;
+        $resultado = self::ejecutaConsulta($sql, $valores);
+        $producto = null;
+        if (isset($resultado)) {
+            $row = $resultado->fetch();
+            $producto = new Producto($row);
+        }
+        return $producto;
+    }
+
 }
+    
+    
+
 //End de la clase DB.php
 ?>
