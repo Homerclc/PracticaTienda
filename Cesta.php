@@ -26,6 +26,10 @@ class Cesta {
         }
      
     }
+    
+    public function getProductos(){
+        return $this->productos;
+    }
 
     public static function obtener_cesta()
     {

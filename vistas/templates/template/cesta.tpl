@@ -1,7 +1,7 @@
-{if (isset($cesta))}
+{if (isset($productos))}
 <h2>Listado de cesta</h2>
-    {foreach $cesta as $producto=>$unidades}
-    {$unidades}  del producto de código {$producto}
+    {foreach $productos as $producto=>$unidades}
+    {$unidades['unidades']}  del producto de código {$producto}
     <br />
     {/foreach}
 {/if}

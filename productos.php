@@ -8,6 +8,7 @@ include 'Cesta.php';
 $plantilla = new Smarty;
 $plantilla->template_dir = 'vistas/templates/template';
 $plantilla->compile_dir = 'vistas/templates/template_c';
+
 if (isset($_SESSION['nombre'])) {
     
 //pasamos el valor del nombre de usuario conectado a la vista
@@ -39,13 +40,21 @@ $cesta=Cesta::obtener_cesta();
 if(isset($_POST['submit'])){
     $cod=$_POST['cod'];
     $cesta->add_producto($cod);
-    
-    
-    
-   
+    $productos=$cesta->getProductos();
 }
+
+
+
+
+
+
+
+
 $cesta->guardar_cesta();
-$plantilla->assign("cesta", $cesta);
+
+
+$plantilla->assign("productos", $productos);
+
 $plantilla->display('producto.tpl');
 
 
