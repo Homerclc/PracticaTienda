@@ -57,6 +57,11 @@ class Cesta {
         $_SESSION['cesta'] = serialize($this);
 
     }
+    
+    public function vaciarCesta(){
+        $this->productos=[];
+        
+    }
 
 
 }

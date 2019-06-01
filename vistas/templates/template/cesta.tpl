@@ -1,15 +1,18 @@
 {if (isset($productos))}
 <h2>Listado de cesta</h2>
-<form action='productos.php' method='POST'>
+    {$total=0}
     {foreach $productos as $producto=>$unidades}
         <form action='productos.php' method='POST'>
-        {$unidades['unidades']}  del producto de código {$producto} a {$unidades['productos']->getPVP()} 
+        {$unidades['unidades']} unidades del producto {$unidades['productos']->getnombrecorto()} a {$unidades['productos']->getPVP()}€/u TOTAL: {$unidades['unidades']*$unidades['productos']->getPVP()}€
+        {$total=$total+($unidades['unidades']*$unidades['productos']->getPVP())}
         <input type='hidden' value='{$producto}' name='cod'>
         <input type='submit' name='Descontar' value='Descontar'/><br/>
         </form>
 
     <br />
     {/foreach}
+    <strong>Importe total:</strong>{$total}€
+    <form action='productos.php' method='POST'>
     <input type="submit" value='Vaciar' name="Vaciar"/>
-</form>
+    </form>
 {/if}

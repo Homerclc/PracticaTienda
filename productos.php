@@ -58,14 +58,13 @@ if(isset($_POST['Descontar'])){
 
 
 if(isset($_POST['Vaciar'])){
-    echo "hola";
-    unset($cesta);
+    $cesta->vaciarCesta();
     $cesta->guardar_cesta();
+    unset($cesta);
 }
 
 
 $plantilla->assign("productos", $productos);
-
 $plantilla->display('producto.tpl');
 
 
