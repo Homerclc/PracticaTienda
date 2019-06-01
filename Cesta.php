@@ -27,6 +27,14 @@ class Cesta {
      
     }
     
+    public function descuentaProducto($cod){
+        if($this->productos[$cod]['unidades']==1){
+            unset($this->productos[$cod]);
+        }else{
+            $this->productos[$cod]['unidades']--;
+        }
+    }
+    
     public function getProductos(){
         return $this->productos;
     }

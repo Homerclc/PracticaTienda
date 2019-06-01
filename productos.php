@@ -22,7 +22,7 @@ if (isset($_SESSION['nombre'])) {
         $nombre_corto = $objetoProducto->getnombrecorto();
 //damos formato y guardamos el codigo en un hidden. (un form para cada producto y boton.
         $listado  .= "<form action='productos.php' method='POST'>"
-                . "<input type='submit' value='añadir' name='submit'>"
+                . "<input type='submit' value='añadir' name='enviar'>"
                 . " $nombre_corto | $precio <br>"
                 . "<input type='hidden' value='$codigo' name='cod'>"
                 . "</form>";
@@ -37,20 +37,31 @@ $cesta=Cesta::obtener_cesta();
 
 
 
-if(isset($_POST['submit'])){
+if(isset($_POST['enviar'])){
     $cod=$_POST['cod'];
     $cesta->add_producto($cod);
     $productos=$cesta->getProductos();
+    $cesta->guardar_cesta();
 }
 
 
 
 
+if(isset($_POST['Descontar'])){
+    $cod=$_POST['cod'];
+    $cesta->descuentaProducto($cod);
+    $productos=$cesta->getProductos();
+    $cesta->guardar_cesta();
+
+    
+}
 
 
-
-
-$cesta->guardar_cesta();
+if(isset($_POST['Vaciar'])){
+    echo "hola";
+    unset($cesta);
+    $cesta->guardar_cesta();
+}
 
 
 $plantilla->assign("productos", $productos);
