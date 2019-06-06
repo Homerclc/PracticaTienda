@@ -21,7 +21,7 @@
                 <!--
                 Mi correo de pay pall
                 -->
-                <input name="business" type="hidden" value="homerclc92@gmail.com" />
+                <input name="business" type="hidden" value="jorgelopca.92-facilitator@gmail.com" />
                 <input name="shopping_url" type="hidden" value="http://localhost/EjerciciosEntregaManuel/tiendaPagarDescripcion/pagar.php" />
                 <input name="currency_code" type="hidden" value="EUR" />
                 <input name="return" type="hidden" value="http://localhost/EjerciciosEntregaManuel/tiendaPagarDescripcion/pagar.php"/>
