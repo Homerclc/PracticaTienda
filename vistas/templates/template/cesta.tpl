@@ -8,11 +8,14 @@
         <input type='hidden' value='{$producto}' name='cod'>
         <input type='submit' name='Descontar' value='Descontar'/><br/>
         </form>
-
     <br />
     {/foreach}
     <strong>Importe total:</strong>{$total}€
     <form action='productos.php' method='POST'>
     <input type="submit" value='Vaciar' name="Vaciar"/>
+    </form>
+    <form action="pagar.php" method="POST">
+        <input type="hidden" value="{$total}" name="total"/>
+        <input type="submit" value="Pagar" name="pagar" />
     </form>
 {/if}

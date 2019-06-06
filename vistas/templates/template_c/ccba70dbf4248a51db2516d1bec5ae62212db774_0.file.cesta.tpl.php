@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-01 13:58:45
+/* Smarty version 3.1.33, created on 2019-06-01 15:15:14
   from 'C:\wamp64\www\PracticaTienda\vistas\templates\template\cesta.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf284954b7e77_45429703',
+  'unifunc' => 'content_5cf296823b32a8_72938110',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ccba70dbf4248a51db2516d1bec5ae62212db774' => 
     array (
       0 => 'C:\\wamp64\\www\\PracticaTienda\\vistas\\templates\\template\\cesta.tpl',
-      1 => 1559397523,
+      1 => 1559402075,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf284954b7e77_45429703 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf296823b32a8_72938110 (Smarty_Internal_Template $_smarty_tpl) {
 if ((isset($_smarty_tpl->tpl_vars['productos']->value))) {?>
 <h2>Listado de cesta</h2>
     <?php $_smarty_tpl->_assignInScope('total', 0);?>
@@ -40,7 +40,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['producto']->value => $_smarty_tpl->tp
 ' name='cod'>
         <input type='submit' name='Descontar' value='Descontar'/><br/>
         </form>
-
     <br />
     <?php
 }
@@ -50,6 +49,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 €
     <form action='productos.php' method='POST'>
     <input type="submit" value='Vaciar' name="Vaciar"/>
+    </form>
+    <form action="pagar.php" method="POST">
+        <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['total']->value;?>
+" name="total"/>
+        <input type="submit" value="Pagar" name="pagar" />
     </form>
 <?php }
 }
