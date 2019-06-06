@@ -40,8 +40,6 @@ $cesta=Cesta::obtener_cesta();
 if(isset($_POST['enviar'])){
     $cod=$_POST['cod'];
     $cesta->add_producto($cod);
-    $productos=$cesta->getProductos();
-    $cesta->guardar_cesta();
 }
 
 
@@ -50,18 +48,16 @@ if(isset($_POST['enviar'])){
 if(isset($_POST['Descontar'])){
     $cod=$_POST['cod'];
     $cesta->descuentaProducto($cod);
-    $productos=$cesta->getProductos();
-    $cesta->guardar_cesta();
 
-    
 }
 
 
 if(isset($_POST['Vaciar'])){
     $cesta->vaciarCesta();
-    $cesta->guardar_cesta();
-    unset($cesta);
 }
+
+$productos=$cesta->getProductos();
+$cesta->guardar_cesta();
 
 
 $plantilla->assign("productos", $productos);
