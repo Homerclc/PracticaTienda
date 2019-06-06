@@ -45,9 +45,9 @@
                                         <td class="pago">{$cont++} {$lista['nombre_corto']}</td>
                                         <td class="pago">{$prod->getCantidad()}</td>
                                         <td class="pago">{$prod->getPvp()}</td>         
-                                    <input type="hidden" name="item_name_" value="{$lista['nombre_corto']}">
-                                    <input type="hidden" name="amount_" value="{$total}">
-                                    <input type="hidden" name="quantity_" value="{$total}">
+                                    <input type="hidden" name="item_name" value="Valor de compra">
+                                    <input type="hidden" name="amount" value="{$total}">
+                                    <input type="hidden" name="quantity" value="1">
                                 {/if}
                             {/foreach}
                         {/foreach}
